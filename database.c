@@ -4,12 +4,6 @@
 
 
 #define MAX_LENGTH 25
-typedef struct {
-    int id;
-    char name[MAX_LENGTH];
-    int age;
-    char role[15];
-  }Employee;
 
   typedef struct {
     int id; 
@@ -23,6 +17,5 @@ typedef struct {
 
 
   int main() {
-  
     return 0;
   }
