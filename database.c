@@ -44,7 +44,7 @@
     print_tree(root->right); // parcours le sous-arbre droit
 }
 
-void save_data_csv(node* root, FILE* file) {
+void save_data_csv(node* root, FILE* file) { // fonction récursive
   if (root == NULL){
   return;
   }
@@ -54,7 +54,7 @@ void save_data_csv(node* root, FILE* file) {
   save_data_csv(root->right, file);
 }
 
-node* searchUser(node *root, int id){
+node* searchUser(node *root, int id){ // pour chercher les users 
   if (root == NULL){
     printf("rien n'a été trouveé ");
     return NULL; 
@@ -66,6 +66,12 @@ node* searchUser(node *root, int id){
   }else{
     return searchUser(root->right, id); // on va chercher a droite
   }
+}
+
+
+//*************FONCTION A BIEN COMPRENDRE (REGARDER LE FICHIER delete .txt) ****************/
+node* deleteUser(node* root, int id){
+  
 }
 
   int main(){
@@ -94,6 +100,7 @@ node* searchUser(node *root, int id){
     int findById = 2; 
     node *userFound = searchUser(root, findById); 
 
+    //**************************************************Recherche user */
     if(userFound != NULL){
       printf("user trouvé!");
       printf("\nUtilisateur trouvé : ID: %d, Nom: %s, Age: %d, Role: %s\n", userFound->row.id, userFound->row.name, userFound->row.age, userFound->row.role); 

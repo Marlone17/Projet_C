@@ -1,0 +1,17 @@
+Les 3 cas à gérer pour supprimer un nœud dans l'arbre binaire :
+
+   
+  Cas 1 :  Le nœud à supprimer n’a pas d’enfant (feuille)
+      ➜ On le supprime simplement.
+
+  Cas 2 :  Le nœud a un seul enfant (gauche ou droite)
+      ➜ On remplace le nœud par son enfant.
+
+  Cas  3 : Le nœud a deux enfants
+       ➜ On trouve soit :
+
+        le plus petit nœud du sous-arbre droit (successeur), 
+        
+        ou, 
+
+        le plus grand du sous-arbre gauche (prédécesseur),
