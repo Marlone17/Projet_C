@@ -29,8 +29,12 @@
       new_node->right = NULL; 
       return new_node; 
     }
-    if(users1.id< root->)
-
+    if (users1.id < root->row.id) {
+      root->left = insert_node(root->left, users1);
+  } else {
+      root->right = insert_node(root->right, users1);
+  }
+  return root;
   }
 
   // int test(int *num){
@@ -46,7 +50,8 @@
   node *root = NULL; // c'est pour initialisern, la racine de l'arbre a nulll (vick, pas oublier la struct)
   Users users1 = {1, "vick", 21,"member"} ; 
   root = insert_node(root, users1);
-  printf("Root: %d, %s\n", root->row.id, root->row.name); // Affiche le p
+  printf(root)
+  // printf("Root: %d, %s\n", root->row.id, root->row.name); // Affiche le p
   //  printf("id : %d , prénom: %s, age: %d; roles:%s", users1.id, users1.name, users1.age, users1.role); 
     return 0;
   }
