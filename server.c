@@ -7,6 +7,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define PORT 8080 
+
 int main(){
     int sockfd, connfd, len; 
     struct sockaddr_in servaddr, cli;
@@ -21,4 +23,8 @@ int main(){
         printf("Socket created\n");
         printf("sockfd == %s\n", sockfd);
     bzero(&servaddr, sizeof(servaddr)); 
+
+    servaddr.sin_family = AF_INET; 
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY); 
+    servaddr.sin_port = htons(PORT); 
 }
