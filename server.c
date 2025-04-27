@@ -41,6 +41,7 @@ int main(){
         } 
         else
             printf("Listen success\n"); 
-
+    
+    connsock = accept(sockfd, (SA*)&cli, &len);
     
 }
