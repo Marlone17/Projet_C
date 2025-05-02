@@ -10,6 +10,8 @@
 #define PORT 8080
 #define SA struct sockaddr
 
+
+
 int main(){
     int socketo, conn, len; 
     struct sockaddr_in servaddr, cli;
@@ -42,6 +44,6 @@ int main(){
         else
             printf("Listen success\n"); 
     
-    connsock = accept(sockfd, (SA*)&cli, &len);
+    connsock = accept(socketo, (SA*)&cli, &len);
     
 }
