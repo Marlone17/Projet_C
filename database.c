@@ -69,6 +69,25 @@ node* searchUser(node *root, int id){ // pour chercher les users
 }
 
 
+//*****************************************Fonction pour Update */
+void modifierUser(node* root, int id, const char* nouveauNom, int nouvelAge, const char* nouveauRole) {
+    node* user = searchUser(root, id);
+    if (user == NULL) {
+        printf("Aucun utilisateur avec l'ID %d trouvé pour modification.\n", id);
+        return;
+    }
+
+    // pour mettre à jour les champs du userz trouvé
+snprintf(user->row.name, MAX_LENGTH, "%s", nouveauNom);  // Snprintf pour que la chaine se termoine tjrs par \0
+user->row.age = nouvelAge;
+snprintf(user->row.role, sizeof(user->row.role), "%s", nouveauRole);
+}
+
+
+
+
+
+
 //fonction pour trouver le plus petit d'un sous arbre donée !!important a bien comprendre aussi
 node* trouver_min(node* root) {
     while (root->left != NULL) {
@@ -116,7 +135,7 @@ node* deleteUser(node* root, int id){
 }
 
   int main(){
-  node *root = NULL; // c'est pour initialisern, la racine de l'arbre a nulll (vick, pas oublier la struct)
+  node *root = NULL; // c'est pour initialisern, la racine de l'arbre a null (vick, pas oublier la struct)
   Users users1 = {1, "vick", 21,"member"} ; 
    Users users2 = {2, "marlone", 55,"student"}; 
    Users users3 = {3, "wilfried", 12,"client"}; 
@@ -149,6 +168,15 @@ node* deleteUser(node* root, int id){
       printf("User non trouvé");
 
     }
+
+    //*******************************************************Modifie user */
+
+  modifierUser(root, 3, "Wil", 13, "pua");
+print_tree(root);
+
+
+
+  //****************************************************Delete user */
     root = deleteUser(root, 2); // supprimer l'utilisateur avec avec l'id 2
     print_tree(root);
 
