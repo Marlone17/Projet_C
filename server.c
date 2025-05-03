@@ -37,7 +37,7 @@ int main(){
     else
         printf("Socket bind\n");
     
-        if ((listen(socketo, 1)) != 0) { 
+        if ((listen(socketo, 3)) != 0) { 
             printf("Listen fail\n"); 
             exit(0); 
         } 
