@@ -24,7 +24,7 @@
 
   node *insert_node(node* root, Users users1){
     if(root == NULL){
-      node *new_node = (node*)malloc(sizeof(node)); 
+      node *new_node = (node*)malloc(sizeof(node));  //on alloue de la mémoire ici, pas oublier de le free() !!
       new_node->row = users1; 
       new_node->left = NULL; 
       new_node->right = NULL; 
