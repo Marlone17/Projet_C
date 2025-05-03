@@ -69,8 +69,49 @@ node* searchUser(node *root, int id){ // pour chercher les users
 }
 
 
+//fonction pour trouver le plus petit d'un sous arbre donée !!important a bien comprendre aussi
+node* trouver_min(node* root) {
+    while (root->left != NULL) {
+        root = root->left;
+    }
+    return root;
+}
+
 //*************FONCTION A BIEN COMPRENDRE (REGARDER LE FICHIER delete .txt) ****************/
 node* deleteUser(node* root, int id){
+ if (root == NULL) return NULL;
+
+    if (id < root->row.id) {
+        root->left = deleteUser(root->left, id);
+    } else if (id > root->row.id) {
+        root->right = deleteUser(root->right, id);
+    } else {
+        // premier cas (regarder le ficher .txt que j'ai rajouter pour comprendre les différents cas)
+        if (root->left == NULL && root->right == NULL) {
+            free(root); // pour libierer la mémore qu'on a allouer
+            return NULL;
+        }
+        // deuxieme cas a droite 
+        else if (root->left == NULL) {
+            node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        // deuxieme cas a gauche
+        else if (root->right == NULL) {
+            node* temp = root->left;
+            free(root);
+            return temp;
+        }
+        // troisieme cas 
+        else {
+            node* min_droite = trouver_min(root->right);
+            root->row = min_droite->row;
+            root->right = deleteUser(root->right, min_droite->row.id);
+        }
+    }
+    return root;
+  
   
 }
 
@@ -108,6 +149,8 @@ node* deleteUser(node* root, int id){
       printf("User non trouvé");
 
     }
+    root = deleteUser(root, 2); // supprimer l'utilisateur avec avec l'id 2
+    print_tree(root);
 
     return 0;
   }
