@@ -10,6 +10,7 @@ typedef struct {
     char role[15];
 } Users;
 
+
 typedef struct node {
     Users row;
     struct node *left;

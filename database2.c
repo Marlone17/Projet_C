@@ -86,8 +86,6 @@ snprintf(user->row.role, sizeof(user->row.role), "%s", nouveauRole);
 
 
 
-
-
 //fonction pour trouver le plus petit d'un sous arbre donée !!important a bien comprendre aussi
 node* trouver_min(node* root) {
     while (root->left != NULL) {
@@ -130,7 +128,6 @@ node* deleteUser(node* root, int id){
         }
     }
     return root;
-  
   
 }
 
