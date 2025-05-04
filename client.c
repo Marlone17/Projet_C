@@ -5,9 +5,28 @@
 #include <string.h>
 #include <strings.h>
 #include <sys/socket.h>
+#include <unistd.h>
 
 #define PORT 8080
 #define SA struct sockaddr
+#define MAXVALUE 100
+
+void bddchat(int socketo){
+    char buff[MAXVALUE];
+    int n;
+    while(1){
+            n =  0;
+
+            while ((buff[n++] = getchar()) != '\n')
+        ;
+            bzero(buff, sizeof(buff));
+            write(socketo, buff, sizeof(buff));
+            bzero(buff, sizeof(buff));
+            read(socketo, buff, sizeof(buff));
+            printf("\nFrom Server : %s\n", buff);
+
+    }
+}
 
 int main(){
     int socketo, connsock;
@@ -35,4 +54,6 @@ int main(){
     }
     else
         printf("connected to server\n");
+    
+    bddchat(socketo);
 }
