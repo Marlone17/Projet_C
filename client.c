@@ -15,15 +15,15 @@ void bddchat(int socketo){
     char buff[MAXVALUE];
     int n;
     while(1){
-            n =  0;
+        bzero(buff, sizeof(buff));
 
-            while ((buff[n++] = getchar()) != '\n')
-        ;
-            bzero(buff, sizeof(buff));
-            write(socketo, buff, sizeof(buff));
-            bzero(buff, sizeof(buff));
-            read(socketo, buff, sizeof(buff));
-            printf("\nFrom Server : %s\n", buff);
+        printf("Select * from user where id = ");
+        fgets(buff, sizeof(buff), stdin);
+        write(socketo, buff, sizeof(buff));
+
+        bzero(buff, sizeof(buff));
+        read(socketo, buff, sizeof(buff));
+        printf("\nFrom Server : %s\n", buff);
 
     }
 }
@@ -40,7 +40,6 @@ int main(){
     else
         printf("Socket created\n");
     
-    printf("socketo == %s\n", socketo);
     bzero(&servaddr, sizeof(servaddr));
 
 
